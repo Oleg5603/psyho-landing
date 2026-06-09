@@ -323,12 +323,26 @@
       transition: background .2s, transform .15s;
     }
     .btn-light:hover { background: var(--rose-lt); transform: translateY(-2px); }
-    .cta-contact {
-      margin-top: 24px;
-      color: rgba(255,255,255,.55);
-      font-size: .85rem;
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,.6);
+      padding: 14px 40px;
+      border-radius: 50px;
+      font-size: .9rem; font-weight: 500;
+      letter-spacing: .07em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, border-color .2s, transform .15s;
     }
-    .cta-contact a { color: rgba(255,255,255,.8); }
+    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: var(--white); transform: translateY(-2px); }
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
 
     /* ─── FOOTER ─── */
     footer {
@@ -511,8 +525,11 @@
   <div class="section-label">Начать</div>
   <div class="section-title">Первый шаг — <em>просто написать</em></div>
   <p class="cta-sub">Оставьте заявку — я свяжусь с вами и мы подберём удобное время.</p>
-  <a href="https://t.me/+79028355176" class="btn-light">Написать в Telegram</a>
-  <p class="cta-contact">Или напишите в <a href="https://vk.me/+79028355176" style="color:rgba(255,255,255,.8)">Макс</a> · <a href="https://vk.ru/misemia" style="color:rgba(255,255,255,.8)">ВКонтакте</a></p>
+  <div class="cta-buttons">
+    <a href="https://t.me/+79028355176" class="btn-light">Telegram</a>
+    <a href="https://vk.me/+79028355176" class="btn-outline">Макс</a>
+    <a href="https://vk.ru/misemia" class="btn-outline">ВКонтакте</a>
+  </div>
 </section>
 
 <!-- FOOTER -->
