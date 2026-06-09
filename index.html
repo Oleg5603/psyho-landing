@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Светлана Палкина — Психотерапия отношений онлайн</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:   #FAF7F3;
+      --rose:    #C9848C;
+      --rose-lt: #EDD8DA;
+      --mauve:   #7A4F57;
+      --beige:   #EDE6DE;
+      --text:    #2E1F22;
+      --muted:   #8C7275;
+      --white:   #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,247,243,.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rose-lt);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; letter-spacing: .04em;
+      color: var(--mauve);
+    }
+    .nav-cta {
+      background: var(--rose);
+      color: var(--white);
+      border: none; border-radius: 40px;
+      padding: 10px 24px;
+      font-family: 'Jost', sans-serif;
+      font-size: .85rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      cursor: pointer; transition: background .2s;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: var(--mauve); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 80px 8% 60px;
+      gap: 60px;
+    }
+    .hero-text { max-width: 540px; }
+    .hero-tag {
+      display: inline-block;
+      background: var(--rose-lt);
+      color: var(--mauve);
+      font-size: .78rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 40px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--rose);
+    }
+    .hero-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+      margin-bottom: 40px;
+      max-width: 460px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--rose);
+      color: var(--white);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-size: .9rem; font-weight: 500;
+      letter-spacing: .07em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--mauve); transform: translateY(-2px); }
+    .hero-note {
+      margin-top: 16px;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+
+    .hero-photo {
+      position: relative;
+      display: flex; justify-content: center;
+    }
+    .photo-frame {
+      width: 380px; height: 480px;
+      border-radius: 200px 200px 160px 160px;
+      background: var(--beige);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-frame::before {
+      content: '';
+      position: absolute; inset: -2px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, var(--rose-lt), transparent 60%);
+      z-index: 0;
+    }
+    .photo-placeholder {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 20px;
+    }
+    .photo-placeholder svg { opacity: .35; margin-bottom: 12px; }
+    .photo-placeholder p {
+      font-size: .8rem; color: var(--muted);
+      line-height: 1.4;
+    }
+    .photo-badge {
+      position: absolute; bottom: 32px; left: -20px;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 14px 20px;
+      box-shadow: 0 8px 32px rgba(122,79,87,.15);
+      z-index: 2;
+    }
+    .photo-badge .badge-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--rose);
+      line-height: 1;
+    }
+    .photo-badge .badge-txt {
+      font-size: .75rem; color: var(--muted);
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 80px 8%; }
+    .section-label {
+      font-size: .75rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.25;
+      margin-bottom: 48px;
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+
+    /* ─── FOR WHOM ─── */
+    .for-whom { background: var(--beige); }
+    .pains-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .pain-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 32px 28px;
+      border-left: 3px solid var(--rose);
+    }
+    .pain-card .pain-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .pain-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: var(--mauve);
+    }
+    .pain-card p { font-size: .92rem; color: var(--muted); font-weight: 300; }
+
+    /* ─── HOW ─── */
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+    .step {
+      text-align: center;
+      padding: 20px;
+    }
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--rose-lt);
+      color: var(--mauve);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .step p { font-size: .88rem; color: var(--muted); font-weight: 300; }
+
+    /* ─── ABOUT ─── */
+    .about { background: var(--cream); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .about-photo-wrap {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 120px 120px 60px 60px;
+      background: var(--beige);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .about-photo-wrap svg { opacity: .3; }
+    .about-text .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
+    .about-text .title-line {
+      color: var(--rose);
+      font-size: .85rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .about-text p { color: var(--muted); font-weight: 300; margin-bottom: 16px; }
+    .creds {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 28px;
+    }
+    .cred-tag {
+      background: var(--rose-lt);
+      color: var(--mauve);
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: .8rem; font-weight: 500;
+    }
+
+    /* ─── PRICE ─── */
+    .price { background: var(--beige); text-align: center; }
+    .price-card {
+      display: inline-block;
+      background: var(--white);
+      border-radius: 28px;
+      padding: 48px 56px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 16px 48px rgba(122,79,87,.1);
+    }
+    .price-label { font-size: .8rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      color: var(--rose);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .price-per { font-size: .85rem; color: var(--muted); margin-bottom: 28px; }
+    .price-includes { list-style: none; margin-bottom: 36px; text-align: left; }
+    .price-includes li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--beige);
+      font-size: .92rem; color: var(--muted);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .price-includes li::before { content: '✦'; color: var(--rose); font-size: .7rem; flex-shrink: 0; }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      background: var(--mauve);
+      text-align: center;
+      padding: 80px 8%;
+    }
+    .cta-section .section-label { color: var(--rose-lt); }
+    .cta-section .section-title { color: var(--white); margin-bottom: 16px; }
+    .cta-section .cta-sub {
+      color: rgba(255,255,255,.7);
+      font-weight: 300;
+      margin-bottom: 40px;
+      font-size: 1rem;
+    }
+    .btn-light {
+      display: inline-block;
+      background: var(--white);
+      color: var(--mauve);
+      padding: 16px 44px;
+      border-radius: 50px;
+      font-size: .9rem; font-weight: 500;
+      letter-spacing: .07em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-light:hover { background: var(--rose-lt); transform: translateY(-2px); }
+    .cta-contact {
+      margin-top: 24px;
+      color: rgba(255,255,255,.55);
+      font-size: .85rem;
+    }
+    .cta-contact a { color: rgba(255,255,255,.8); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,.45);
+      text-align: center;
+      padding: 24px 8%;
+      font-size: .8rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 100px;
+      }
+      .hero-text { max-width: 100%; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-photo { order: -1; }
+      .photo-frame { width: 260px; height: 320px; }
+      .photo-badge { left: 10px; bottom: 16px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-photo-wrap { max-width: 280px; margin: 0 auto; }
+      nav { padding: 0 5%; }
+      section { padding: 60px 5%; }
+    }
+
+    @media (max-width: 480px) {
+      .price-card { padding: 36px 28px; }
+      .how-steps { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">С. Палкина · Психотерапевт</div>
+  <a href="#cta" class="nav-cta">Записаться</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-tag">Психотерапия онлайн</span>
+    <h1>Отношения, которые <em>снова</em> могут стать близкими</h1>
+    <p class="hero-sub">Для пар в кризисе и тех, кто устал от одиночества, ссор и одних и тех же ошибок в личной жизни.</p>
+    <a href="#cta" class="btn-primary">Записаться на сессию</a>
+    <p class="hero-note">Сессия 60 минут · Онлайн · 5 000 ₽</p>
+  </div>
+  <div class="hero-photo">
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="22" r="12" stroke="#7A4F57" stroke-width="2"/>
+          <path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24" stroke="#7A4F57" stroke-width="2"/>
+        </svg>
+        <p>Добавьте фото<br>специалиста</p>
+      </div>
+    </div>
+    <div class="photo-badge">
+      <div class="badge-num">5+</div>
+      <div class="badge-txt">лет практики</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section class="for-whom">
+  <div class="section-label">Для кого</div>
+  <div class="section-title">Вы здесь, если <em>узнаёте себя</em></div>
+  <div class="pains-grid">
+    <div class="pain-card">
+      <div class="pain-icon">💬</div>
+      <h3>Постоянные конфликты</h3>
+      <p>Разговоры превращаются в ссоры. Один и тот же круг обид — и никакого выхода.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">🌫️</div>
+      <h3>Холодность и отдалённость</h3>
+      <p>Живёте рядом, но каждый в своём мире. Близость ушла — непонятно как её вернуть.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">🔄</div>
+      <h3>Повторяющиеся ошибки</h3>
+      <p>Каждый раз одно и то же: похожие люди, похожий сценарий, похожая боль.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">💔</div>
+      <h3>Расставание и потеря</h3>
+      <p>Боль после разрыва не отпускает. Сложно двигаться дальше и снова доверять.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">🤍</div>
+      <h3>Одиночество</h3>
+      <p>Хочется настоящей близости и отношений — но что-то мешает их построить.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">🔗</div>
+      <h3>Созависимость</h3>
+      <p>Жизнь вращается вокруг партнёра. Свои границы и желания потерялись.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how">
+  <div class="section-label">Как это работает</div>
+  <div class="section-title">Сессия в <em>безопасном пространстве</em></div>
+  <div class="how-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Запись</h3>
+      <p>Выбираете удобное время и оставляете заявку. Подтверждаю в течение дня.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Встреча онлайн</h3>
+      <p>Сессия 60 минут в видеозвонке. Никуда ехать не нужно — из любой точки.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Работа в глубину</h3>
+      <p>Без осуждения, без советов «просто поговорите». Работаем с тем, что по-настоящему происходит.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>Изменения</h3>
+      <p>Постепенно меняется то, как вы воспринимаете себя, партнёра и отношения.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-photo-wrap">
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+        <circle cx="40" cy="28" r="16" stroke="#7A4F57" stroke-width="2"/>
+        <path d="M10 72c0-16.569 13.431-30 30-30s30 13.431 30 30" stroke="#7A4F57" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="about-text">
+      <div class="section-label">О специалисте</div>
+      <div class="name">Светлана Филаретовна Палкина</div>
+      <div class="title-line">Психотерапевт · Специалист по отношениям</div>
+      <p>Помогаю людям разобраться в том, что происходит в их отношениях — с партнёром, с собой, с близкими. В работе важны не советы, а понимание: откуда берётся боль и как её изменить.</p>
+      <p>Работаю с парами и индивидуально. Онлайн — так же глубоко и эффективно, как при личной встрече.</p>
+      <div class="creds">
+        <span class="cred-tag">Психотерапия отношений</span>
+        <span class="cred-tag">Работа с парами</span>
+        <span class="cred-tag">Онлайн-формат</span>
+        <span class="cred-tag">Индивидуальные сессии</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price">
+  <div class="section-label">Стоимость</div>
+  <div class="section-title" style="margin-bottom: 40px;">Прозрачные <em>условия</em></div>
+  <div class="price-card">
+    <div class="price-label">Одна сессия</div>
+    <div class="price-amount">5 000 ₽</div>
+    <div class="price-per">60 минут · онлайн</div>
+    <ul class="price-includes">
+      <li>Видеосессия 60 минут</li>
+      <li>Индивидуальная или для пары</li>
+      <li>Без очереди — по записи</li>
+      <li>Конфиденциально</li>
+    </ul>
+    <a href="#cta" class="btn-primary" style="width: 100%; text-align: center; display: block;">Записаться</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <div class="section-label">Начать</div>
+  <div class="section-title">Первый шаг — <em>просто написать</em></div>
+  <p class="cta-sub">Оставьте заявку — я свяжусь с вами и мы подберём удобное время.</p>
+  <a href="https://t.me/+79028355176" class="btn-light">Написать в Telegram</a>
+  <p class="cta-contact">Или напишите в <a href="https://vk.me/+79028355176" style="color:rgba(255,255,255,.8)">Макс</a> · <a href="https://vk.ru/misemia" style="color:rgba(255,255,255,.8)">ВКонтакте</a></p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Светлана Палкина · Психотерапия отношений онлайн</p>
+</footer>
+
+</body>
+</html>
